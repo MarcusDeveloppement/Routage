@@ -1,0 +1,15 @@
+html {
+  color: #252525;
+  margin: 1rem 1rem;
+}
+p {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+img {
+  display: flex;
+}
+.header {
+  text-align: center;
+  background-color: #bbf3ff;
+}

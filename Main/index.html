@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/90c2f345b2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Routage</title>
+  </head>
+  <body>
+    <h1 class="header">Projet : Configuration d'un routage statique</h1>
+    <section class="intro">
+      <h3>
+        <i class="fa-solid fa-bullseye"></i> L’objectif principal de ce projet
+        est de comprendre, configurer et maîtriser le fonctionnement du routage
+        statique dans un réseau multi-sites, en simulant un réseau
+        interconnecté.
+        <img src="../img/routage-static.webp" alt="image routage france" />
+        <br />Cette activité permet d’aborder plusieurs notions fondamentales de
+        l’administration réseau :
+        <ul>
+          <li>La définition de plages d’adressage IP cohérentes</li>
+          <li>La configuration des interfaces routeurs</li>
+          <li>Le routage statique entre différents réseaux</li>
+          <li>La vérification de la connectivité globale</li>
+          <li>
+            La gestion de liens point-à-point (/30) pour les interconnexions WAN
+          </li>
+        </ul>
+        Ce projet est réalisé à l’aide du simulateur Cisco Packet Tracer (outil
+        utilisé pour la conception et le test d’infrastructures réseau.)
+      </h3>
+    </section>
+    <section class="adressage">
+      <div class="">
+        <h2>Plan d'adressage IP</h2>
+        <h3>Réseau LAN</h3>
+        <img src="../img/ipLan.webp" alt="image addressage LAN" />
+      </div>
+      <div>
+        <h3>Réseau WAN</h3>
+        <p>
+          Pour calculer mes plages de sous-réseaux, j’ai utilisé la méthode de
+          l’octet significatif. <br />En repérant l’octet où le masque de
+          sous-réseau commence à s’appliquer, j’ai déterminé l’incrément (256 -
+          masque), puis j’ai listé les plages possibles en ajoutant cet
+          incrément à partir de 0. <br />Par exemple, pour les liaisons /30
+          (masque 255.255.255.252), j’ai utilisé un incrément de 4 sur le
+          dernier octet, ce qui m’a permis de générer les plages 99.0.0.0/30,
+          99.0.0.4/30, 99.0.0.8/30, etc... <br />
+          jusqu’à 99.0.0.252/30. <br />
+          Le préfixe "99" a été choisi pour isoler les réseaux d'infrastructure
+          WAN des réseaux utilisateurs. Il est le premier octet qui permet
+          d’identifier immédiatement une adresse IP comme appartenant à
+          l’infrastructure WAN, et non à un réseau utilisateur. <br />
+          Cela respecte les bonnes pratiques d’adressage utilisées en
+          entreprise, où l’on sépare toujours les plages LAN, WAN, DMZ, etc.
+          pour faciliter la lecture, la sécurité et la maintenance du réseau.
+          <br />En entreprise, on utilise souvent des plages IP “réservées” pour
+          les WAN internes : 10.255.x.x ou 192.0.x.x ou tout simplement une
+          plage comme 99.x.x.x qui ne sera jamais utilisée dans les LAN (C’est
+          une convention logique et structurée, pas une règle stricte.)
+        </p>
+        <img src="../img/ipWan.webp" alt="image addressage WAN" />
+      </div>
+    </section>
+    <section class="config">
+      <h2>Configuration des routeurs</h2>
+      <h3>Chaque routeur est configuré manuellement avec :</h3>
+      <ul>
+        <li>Adresse IP pour son LAN et ses liaisons WAN</li>
+        <li>Activation des interfaces (no shutdown)</li>
+        <li>Routes statiques vers les réseaux distants</li>
+      </ul>
+      <h4>Exemple : Routeur de Lille</h4>
+      <img
+        src="../img/routerLille.webp"
+        alt="image screenshot lignes commandes"
+      />
+      <h4>Exemple : Routeur de Paris</h4>
+      <img src="../img/routerParis.webp" alt="" />
+    </section>
+    <section>
+      <p>
+        Ce projet repose sur le routage statique, c'est-à-dire que chaque route
+        est configurée manuellement. <br />
+        Avantages : Contrôle total des chemins Aucune bande passante utilisée
+        pour le routage <br />
+        Inconvénients : Maintenance plus lourde Pas de reconfiguration
+        automatique en cas de panne <br />**Ce choix est pédagogique et
+        pertinent pour maîtriser les bases du routage IP.**
+      </p>
+    </section>
+  </body>
+</html>
