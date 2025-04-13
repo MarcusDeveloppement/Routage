@@ -1,15 +1,87 @@
+body {
+  position: relative;
+  margin: 1rem;
+  min-height: 100vh;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/wallBG.webp") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.15;
+  z-index: -1;
+}
+
 html {
   color: #252525;
-  margin: 1rem 1rem;
 }
-p {
+
+p,
+ul {
   font-size: 1.2rem;
   line-height: 1.6rem;
 }
+
+h2 {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: rgb(150, 45, 255);
+}
+
+.subtitle {
+  color: rgb(2, 182, 65);
+}
+
+h4 {
+  font-size: 1.35rem;
+  background-color: rgba(147, 255, 190, 0.838);
+}
+
 img {
+  border-radius: 10px;
+  border: #252525 dotted 1px;
   display: flex;
 }
 .header {
   text-align: center;
   background-color: #bbf3ff;
+}
+
+.ratio {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: row;
+}
+
+.surline {
+  background-color: rgb(255, 255, 182);
+  display: inline;
+}
+
+.adventage {
+  color: rgb(42, 201, 42);
+  font-weight: 900;
+}
+
+.inconv {
+  color: rgb(220, 46, 46);
+  font-weight: 900;
+}
+
+.nb {
+  font-style: italic;
+  color: rgb(40, 40, 73);
+}
+
+.fa-bullseye {
+  color: rgb(255, 147, 147);
 }
